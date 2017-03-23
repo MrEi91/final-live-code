@@ -9,6 +9,7 @@ let User = {}
 
 User.getUsers = (req, res, next) => {
   user.find()
+    .populate('articles')
     .then((users) => {
       res.send(users)
     })
