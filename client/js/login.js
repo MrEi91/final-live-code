@@ -1,10 +1,10 @@
-$('#loginForm').submit(function(e) {
+$('#loginForm').submit(function (e) {
   e.preventDefault()
   $.ajax({
     url: 'http://localhost:3000/api/user/login',
     type: 'POST',
     data: $(this).serialize(),
-    success: function(user) {
+    success: function (user) {
       if (user) {
         if (user.userUndefined) {
           swal('Oops...', 'user is not found!', 'warning')
@@ -18,13 +18,13 @@ $('#loginForm').submit(function(e) {
         }
       }
     },
-    error: function(error) {
+    error: function (error) {
       console.log(erorr)
     }
   })
 })
 
-function register() {
+function register () {
   $.ajax({
     url: 'http://localhost:3000/api/user',
     type: 'POST',
@@ -34,14 +34,14 @@ function register() {
       email: $('#email').val(),
       password: $('#password').val()
     },
-    success: function(user) {
+    success: function (user) {
       if (user.userAlready) {
         swal('Oops...', 'user already in used!', 'warning')
       } else {
         window.location.href = 'http://127.0.0.1:8080/index.html'
       }
     },
-    error: function(err) {
+    error: function (err) {
       console.log(err)
     }
   })
