@@ -22,8 +22,8 @@ User.getUsers = (req, res, next) => {
 
 User.createUser = (req, res, next) => {
   user.findOne({
-      email: req.body.email
-    })
+    email: req.body.email
+  })
     .then((email) => {
       if (email) {
         res.send({
@@ -31,11 +31,11 @@ User.createUser = (req, res, next) => {
         })
       } else {
         user.create({
-            name: req.body.name,
-            username: req.body.username,
-            email: req.body.email,
-            password: passwordHash.generate(req.body.password)
-          })
+          name: req.body.name,
+          username: req.body.username,
+          email: req.body.email,
+          password: passwordHash.generate(req.body.password)
+        })
           .then((user) => {
             res.send({
               message: 'SUCCSESS',
@@ -60,8 +60,8 @@ User.createUser = (req, res, next) => {
 
 User.login = (req, res, next) => {
   user.findOne({
-      email: req.body.email
-    })
+    email: req.body.email
+  })
     .then((user) => {
       if (!user) {
         res.send({

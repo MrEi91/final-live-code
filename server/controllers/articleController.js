@@ -26,8 +26,8 @@ Article.getArticles = (req, res, next) => {
 
 Article.getArticle = (req, res, next) => {
   article.findOne({
-      slug: req.params.slug
-    })
+    slug: req.params.slug
+  })
     .populate({
       path: 'User',
       model: 'User'
@@ -44,23 +44,23 @@ Article.getArticle = (req, res, next) => {
 
 Article.createArticle = (req, res, next) => {
   article.create({
-      title: req.body.title,
-      content: req.body.content,
-      author: req.body.userID,
-      slug: slug(req.body.title).toLowerCase()
-    })
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.userID,
+    slug: slug(req.body.title).toLowerCase()
+  })
     .then((article) => {
       user.findOne({
-          _id: req.body.userID
-        })
-        .then(function(user) {
+        _id: req.body.userID
+      })
+        .then(function (user) {
           user.articles.push(article._id)
           user.save()
-            .then(function(result) {
+            .then(function (result) {
               console.log(result)
             })
         })
-        .catch(function(err) {
+        .catch(function (err) {
           res.send(err)
         })
       res.send({
@@ -77,8 +77,8 @@ Article.createArticle = (req, res, next) => {
 
 Article.updateArticle = (req, res, next) => {
   article.findOne({
-      slug: req.params.slug
-    })
+    slug: req.params.slug
+  })
     .then((article) => {
       if (!article) {
         res.send({
@@ -86,10 +86,10 @@ Article.updateArticle = (req, res, next) => {
         })
       } else {
         article.update({
-            title: req.body.title,
-            content: req.body.content,
-            slug: slug(req.body.title).toLowerCase()
-          })
+          title: req.body.title,
+          content: req.body.content,
+          slug: slug(req.body.title).toLowerCase()
+        })
           .then(() => {
             res.send({
               message: `Article title ${article.title} has been updated!`,
@@ -113,8 +113,8 @@ Article.updateArticle = (req, res, next) => {
 
 Article.deleteArticle = (req, res, next) => {
   article.findOne({
-      slug: req.params.slug
-    })
+    slug: req.params.slug
+  })
     .then((article) => {
       if (!article) {
         res.send({
