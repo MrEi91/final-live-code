@@ -6,6 +6,7 @@ const cors = require('cors')
 const app = express()
 
 let index = require('./routes/index')
+let article = require('./routes/article')
 
 app.use(cors())
 app.use(morgan('dev'))
@@ -15,5 +16,6 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use('/api', index)
+app.use('/api', article)
 
 app.listen(3000)
