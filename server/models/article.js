@@ -6,10 +6,11 @@ require('../config/db')
 let articleSchema = new Schema({
   title: String,
   content: String,
-  author: [{
+  slug: String,
+  author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }]
+  }
 }, {
   timestamps: true
 })

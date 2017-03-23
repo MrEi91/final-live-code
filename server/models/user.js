@@ -20,7 +20,11 @@ let userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  articles: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Article'
+  }]
 }, {
   timestamps: true
 })
