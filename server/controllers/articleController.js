@@ -24,6 +24,24 @@ Article.getArticles = (req, res, next) => {
     })
 }
 
+Article.getArticle = (req, res, next) => {
+  article.findOne({
+      slug: req.params.slug
+    })
+    .populate({
+      path: 'User',
+      model: 'User'
+    })
+    .then((article) => {
+      res.send(article)
+    })
+    .catch((error) => {
+      res.send({
+        error: error
+      })
+    })
+}
+
 Article.createArticle = (req, res, next) => {
   article.create({
       title: req.body.title,
