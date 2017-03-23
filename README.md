@@ -44,3 +44,8 @@ npm start
 ```
 live-server
 ```
+
+#### NOTE :
+```
+Ketika create article, author nya dimasukan secara manual di text-field author, karena belum otomatis terisi.
+```
