@@ -60,7 +60,7 @@ User.createUser = (req, res, next) => {
 
 User.login = (req, res, next) => {
   user.findOne({
-      username: req.body.username
+      email: req.body.email
     })
     .then((user) => {
       if (!user) {
