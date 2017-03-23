@@ -27,10 +27,11 @@ Program ini dibuat untuk memenuhi tugas final live code di phase 2
 |/api/article/:slug   |   DELETE   | DELETE ARTICLE |
 
 #### cara penggunaan
->```
+```
 npm install
 ```
->```
+
+```
 buat .env di directory server
 HOST_NAME = 127.0.0.1
 DATABASE_NAME = live-code-ei
