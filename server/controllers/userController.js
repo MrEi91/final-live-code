@@ -59,7 +59,7 @@ User.createUser = (req, res, next) => {
 
 User.login = (req, res, next) => {
   user.findOne({
-      email: req.body.email
+      username: req.body.username
     })
     .then((user) => {
       if (!user) {
@@ -69,7 +69,7 @@ User.login = (req, res, next) => {
       } else {
         if (passwordHash.verify(req.body.password, user.password)) {
           let token = jwt.sign({
-            email: req.body.email
+            email: req.body.username
           }, secret, {})
 
           res.send({
